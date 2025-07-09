@@ -11,6 +11,7 @@ function isNumberRetBool(input: any): boolean{
     return typeof input === 'number';
 }
 
+
 let number: any = 5;
 
 if(isNumberRetBool(number)){
@@ -20,6 +21,9 @@ if(isNumberRetBool(number)){
 if(isNumber(number)){
     number;
 }
+
+/////////////////////////////////////////////////////////////
+
 
 interface Doge{
     name: string;

@@ -1,23 +1,26 @@
 /**
- * type or Interface
+ * Type vs Interface
  */
 
-interface Iobject{
-    x:number;
-    y:number;
+// Object 선언할때
+interface IObject {
+    x: number;
+    y: number;
 }
 
 type TObject = {
     x: number;
     y: number;
 }
-//function
+
+// function을 선언할때
 interface IFunction {
     (x: number, y: number): number;
 }
 
-type Tfucntion = (x:number, y:number) => number;
+type TFunction = (x: number, y: number) => number;
 
+/////////////////////////////////////////////////////////////
 
 /**
  * Type에서는 할 수 있지만
@@ -32,6 +35,9 @@ type UnionType = string | number;
 
 // (3) primitive list 또는 tuple 타입 선언하기
 type TupleType = [number, string];
+
+
+/////////////////////////////////////////////////////////////
 
 /**
  * Interface는 할 수 있고
@@ -52,26 +58,35 @@ let rectangle: IRectangle = {
     width: 100,
 }
 
-// type TRectangle = {
-//     height: number;
-// }
+ type TRectangle = {
+     height: number;
+ }
 
-// type TRectangle = {
-//     width: number;
-// }
+ type TRectangle = {
+     width: number;
+ }
+
+/////////////////////////////////////////////////////////////
 
 /**
  * Interface Merging
  */
 class Review {
     // 프로퍼티
-    getYYYY = (x: number) => { return x };
+    getYYYYYYYYYYYYYYY = (x: number) => { return x };
 
     // 메서드
-    getXXXX(x: number) {
+    getXXXXXXXXXXXXXXX(x: number) {
         return x;
     }
 }
+
+/////////////////////////////////////////////////////////////
+/**
+ * 위에꺼랑 무관
+ */
+/////////////////////////////////////////////////////////////
+
 
 interface GetXnY {
     getX: (x: number) => number;
@@ -80,9 +95,8 @@ interface GetXnY {
 
 interface GetXnY {
     getX: (x: number) => number;
-    // getY: (y: string) => number;
+    getY: (y: string) => number;
 }
- //프로퍼티는 오버로딩안됨
 
 interface GetXnY2 {
     getX(x: number): number;

@@ -1,22 +1,17 @@
 /**
- * function type
+ * Function Type
  */
-
 type Mapper = (x: string) => string;
 
-const runner = () =>{
-    return ['a','b','c'].map((x) => `리스트 ${x}`);
+const runner = (callback: Mapper)=>{
+    return ['안유진', '장원영', '레이'].map(
+        callback,
+    );
 }
 
-const runner2 = (callback: Mapper) =>{
-    return ['안유진', '장원영', '레이'].map(callback,);
-}
+console.log(runner((x) => `아이브 멤버: ${x}`));
 
-console.log(runner());
-console.log(runner2((x) => `아이브 멤버: ${x}`));
-
-
-
+/////////////////////////////////////////////////////////////
 
 
 type MultiplyTwoNumbers = (x: number, y: number) => number;
@@ -25,17 +20,16 @@ const multiplyTwoNumbers: MultiplyTwoNumbers = (x, y)=>{
     return x+y;
 }
 
+/////////////////////////////////////////////////////////////
 
 /**
- * interface로 함수
+ * Interface로 함수 타입 선언하기
  */
-
-interface IMultiplyTwoNUmbers{
-    (x: number, y: number) : number;
+interface IMultiplyTwoNumbers{
+    (x: number, y: number): number;
 }
 
-const iMultiplyTwoNUmbers: IMultiplyTwoNUmbers = (x,y) =>{
+const multiplyTwoNumbers3: IMultiplyTwoNumbers = (x, y) => {
+    // return true;
     return x * y;
 }
-console.log(iMultiplyTwoNUmbers(2,5));
-

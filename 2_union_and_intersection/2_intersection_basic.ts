@@ -1,32 +1,30 @@
 /**
- * 
  * Intersection
  * 
  * And
  */
-
-
-interface Human {
+interface Human{
     name: string;
     age: number;
 }
 
-
-interface Contacts {
-    phone: number;
+interface Contacts{
+    phone: string;
     address: string;
 }
 
-type HumanAndConTacts = Human & Contacts;
+type HumanAndContacts = Human & Contacts;
 
-let humanAndConTacts: HumanAndConTacts ={
-    name: '코팩',
-    age: 23,
-    phone: 111,
-    address: 'ddddd'
-}
+let humanAndContacts: HumanAndContacts = {
+    name: '코드팩토리',
+    age: 32,
+    phone: '01012341234',
+    address: '서울시'
+};
+
+/////////////////////////////////////////////////////////////
+
 
 type NumberAndString = number & string;
-//never타입으로 됨
 
-let numberAndString: NumberAndString = NumberAndString;
+let numberAndString: NumberAndString = never;

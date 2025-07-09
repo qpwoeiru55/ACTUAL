@@ -17,3 +17,4 @@ const f2 = r.getX;
 console.log(r.getX());
 
 console.log(f1()); //
+console.log(f2()); //

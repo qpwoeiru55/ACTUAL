@@ -45,6 +45,9 @@ new anyValue();
 // unknownValue.name;
 // new unknownValue();
 
+/////////////////////////////////////////////////////////////
+
+
 function isString(target: unknown) : target is string{
     return typeof target === 'string';
 }
@@ -55,23 +58,26 @@ if(isString(testVal)){
     testVal;
 }
 
+/////////////////////////////////////////////////////////////
+
+
 /**
  * Union Type
  */
-type uOrString = unknown | string;
-type uOrBoolean = unknown | boolean;
-type uOrNumber = unknown | number;
-type uOrAny = unknown | any;
-type anyOrU = any | unknown;
+type uOrString = unknown | string;   // unknown
+type uOrBoolean = unknown | boolean; // unknown
+type uOrNumber = unknown | number;   // unknown
+type uOrAny = unknown | any;         // any
+type anyOrU = any | unknown;         // any
 
 /**
  * Intersection Type
  */
-type uAndString = unknown & string;
-type uAndBoolean = unknown & boolean;
-type uAndNumber = unknown & number;
-type uAndAny = unknown & any;
-type anyAndU = any & unknown;
+type uAndString = unknown & string;   // string
+type uAndBoolean = unknown & boolean; // boolean
+type uAndNumber = unknown & number;   // number
+type uAndAny = unknown & any;          // any
+type anyAndU = any & unknown;          // any
 
 /**
  * Operator 사용

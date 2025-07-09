@@ -1,51 +1,82 @@
 /**
- *  
- * 유니언 타입을 병합할수 있는 방법중 하나
+ * Union Basics
  * 
+ * 유니언은 TS에서 타입을 병합 할 수 있는 수많은 방법중 하나이다.
  */
+type StringOrBooleanType = string | boolean;
 
+let stringOrBooleanType: StringOrBooleanType = '아이브';
+stringOrBooleanType = true;
 
-type StringOrBooleanTpye = string | boolean;
-let stringOrBooleanTpye: StringOrBooleanTpye = '아이브';
-stringOrBooleanTpye = true;
+stringOrBooleanType = undefined;
 
 type StrBoolNullType = string | boolean | null;
 
-type StatsTypes = 'DONE' | 'LOADING' | 'ERROR';
-let state: StatsTypes = 'DONE';
+/////////////////////////////////////////////////////////////
+
+type StateTypes = 'DONE' | 'LOADING' | 'ERROR';
+
+let state: StateTypes = 'DONE';
 state = 'LOADING';
+state = 'INITIAL';
 
+/////////////////////////////////////////////////////////////
 
+/**
+ * 리스트의 유니언
+ */
+// string으로 구성된 리스트 또는 boolean으로 구성된 리스트
 type StringListOrBooleanList = string[] | boolean[];
 
-let stringListOrBooleanList: StringListOrBooleanList = [
+let strListOrBooleanList: StringListOrBooleanList = [
     '아이유',
-    '김고운',
+    '김고은',
     '박소담',
 ]
-stringListOrBooleanList = [
+
+strListOrBooleanList = [
     true,
     false,
+    false,
+    true,
 ]
 
-stringListOrBooleanList = [
-    true,
-    '박소담',
-]
+ strListOrBooleanList = [
+     true,
+     '아이유',
+ ]
+
+ /////////////////////////////////////////////////////////////
+
 
 type StrOrNumberList = (string | number)[];
-let strOrNumberList: StrOrNumberList = [
+
+let stringOrNumberList = [
+    1, 2, 3,
     '아이유',
-    '김고운',
-    2,
+    '레드벨벳',
+];
+
+stringOrNumberList = [
+    1,2,3
 ]
+
+stringOrNumberList = [
+    '아이유', '레드벨벳',
+]
+
+ stringOrNumberList = [
+     true,
+     false,
+ ]
+
+/////////////////////////////////////////////////////////////
 
 
 /**
- * interface로 사용하는 union
+ * Interface로 사용하는 union
  */
-
-interface Animal {
+interface Animal{
     name: string;
     age: number;
 }
@@ -55,53 +86,81 @@ interface Human {
     age: number;
     address: string;
 }
+
 type AnimalOrHuman = Animal | Human;
 
-let animalOrHuman: AnimalOrHuman={
+let animalOrHuman: AnimalOrHuman = {
     name: '최지호',
-    age: 12,
+    age: 32,
     address: '대한민국',
 }
 
+console.log(animalOrHuman);
+console.log(animalOrHuman.name);
+console.log(animalOrHuman.age);
 console.log(animalOrHuman.address);
-animalOrHuman={
+
+/////////////////////////////////////////////////////////////
+
+animalOrHuman = {
     name: '오리',
-    age: 12,
+    age: 9,
 }
 
+console.log(animalOrHuman);
+
+console.log(animalOrHuman.name);
+console.log(animalOrHuman.age);
 console.log(animalOrHuman.address);
+
+/////////////////////////////////////////////////////////////
+
 
 let animalOrHuman2: {
     name: string;
     age: number;
 } | {
-    ame: string;
+    name: string;
     age: number;
     address: string;
-} = {
+} ={
     name: '최지호',
-    age: 12,
+    age: 32,
     address: '대한민국',
-}
+};
 
-console.log(animalOrHuman2);
+console.log(animalOrHuman2.address);
+console.log(animalOrHuman2.name);
+console.log(animalOrHuman2.age);
+
+animalOrHuman2 = {
+    name: '오리',
+    age: 9,
+};
+
+console.log(animalOrHuman2.address);
+console.log(animalOrHuman2.name);
+console.log(animalOrHuman2.age);
+
+/////////////////////////////////////////////////////////////
 
 
+// 서로 관계가 없는 유니언을 선언하면 어떻게 되는가
 type Person = {
     name: string;
     age: number;
 }
 
 type Cat = {
-    breed : string;
-    country : string;
+    breed: string;
+    country: string;
 }
 
 type PersonOrCat = Person | Cat;
 
-const personOrCat: PersonOrCat ={
-    name: '코팩',
+const personOrCat: PersonOrCat = {
+    // name: '코드팩토리',
     age: 32,
-    breed: 'abcd',
-    country: '영국'
+    // breed: 'Yorkshire Terrier',
+    country: '영국',
 }

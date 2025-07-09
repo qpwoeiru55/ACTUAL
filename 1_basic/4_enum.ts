@@ -2,18 +2,22 @@
  * Enum
  */
 
-
 /**
- * DONE 
- * ERROR
- * LOADING
- * INITIAL
+ * API 요청을한다.
+ * 상태는 4가지 상태
+ * 
+ * DONE - 요청 완료 상태
+ * ERROR - 에러가 생긴 상태
+ * LOADING - 로딩상태
+ * INITIAL - 초기 상태
  */
-
 function runWork(){
     let state = 'INITIAL';
+
     try{
         state = 'LOADING';
+        // 작업을 한다.
+
         state = 'DONE';
     }catch(e){
         state = 'ERROR';
@@ -22,19 +26,22 @@ function runWork(){
     }
 }
 
-console.log(runWork() === 'DONE');
+console.log(runWork() === 'DONNE');
 
+/////////////////////////////////////////////////////////////
 
 const doneState = 'DONE';
-const loadingState = 'LOADING';
+const loadingState = 'LOADGNG';
 const errorState = 'ERROR';
 const initialState = 'INITIAL';
 
-
 function runWork2(){
     let state = initialState;
+
     try{
         state = loadingState;
+        // 작업을 한다.
+
         state = doneState;
     }catch(e){
         state = errorState;
@@ -44,20 +51,22 @@ function runWork2(){
 }
 
 console.log(runWork2() === doneState);
+/////////////////////////////////////////////////////////////
 
-
-enum State{
+enum State {
     DONE = 'DONE',
     LOADING = 'LOADING',
+    INITIAL = 'INITIAL',
     ERROR = 'ERROR',
-    INITIAL = 'INITIAL'    
 }
-
 
 function runWork3(){
     let state = State.INITIAL;
+
     try{
         state = State.LOADING;
+        // 작업을 한다.
+
         state = State.DONE;
     }catch(e){
         state = State.ERROR;
@@ -68,4 +77,3 @@ function runWork3(){
 
 console.log(runWork3() === State.DONE);
 console.log(runWork3());
-

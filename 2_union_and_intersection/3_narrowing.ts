@@ -1,14 +1,16 @@
 /**
- * union 타입에서 더욱 구체적인 타입으로 논리적으로 유추 할 수 있게 되는걸 의미한다.
+ * Narrowing
+ * 
+ * Narrowing은 Union 타입에서 더욱 구체적인 타입으로
+ * 논리적으로 유추 할 수 있게 되는걸 의미한다.
  */
+ let numberOrString: number | string = 'Code Factory';
+ numberOrString;
 
-let numberOrStirng: number | string = 'code factory';
-numberOrStirng;
-
-const decimal = 12.234;
+const decimal = 12.3278;
 console.log(decimal.toFixed(2));
 
-numberOrStirng.toFixed();
+numberOrString.toFixed();
 
 /**
  * Narrowing 종류
@@ -23,44 +25,46 @@ numberOrStirng.toFixed();
  * 8) exhaustiveness checking
  */
 
-//1) Assignment Narrowing
-//특정 값을 할당해서 내로잉
-let numberOrStirng1: number | string = '아이유';
-numberOrStirng1.toString();
+// (1) Assignment Narrowing
+// 특정 값을 할당해서 내로잉
+let numbOrString: number | string = '아이유';
 
-//2) typeof Narrowing
-numberOrStirng1 = Math.random() > 0.5 ? 1123: '아이유';
+numbOrString.toString();
 
-if(typeof numberOrStirng1 === 'string'){
-    numberOrStirng1;
-}else{
-    numberOrStirng1;
+// (2) typeof narrowing
+numbOrString = Math.random() > 0.5 ? 1123 : '아이유';
+
+if (typeof numbOrString === 'string') {
+    numbOrString;
+} else {
+    numbOrString;
 }
 
-//3) Truthiness Narrowing
-let nullOrString: null | string[] = Math.random() > 0.5 ? null: ['아이유','레디'];
+// (3) Truthiness Narrowing
+let nullOrString: null | string[] = Math.random() > 0.5 ? null : ['아이유', '레드벨벳'];
 
-if(nullOrString){
+if (nullOrString) {
     nullOrString;
-}else{
+} else {
     nullOrString;
 }
 
-//4) Equality Narrowing
-let numberOrStirng2 : number | string = Math.random() > 0.5 ? 123 : '아이유';
-let stringOrBool2 : string | boolean = Math.random() > 0.5 ? true:  '아이유';
+// (4) Equality Narrowing
+let numbOrString2: number | string = Math.random() > 0.5 ?
+    1123 : '아이유';
+let stringOrBool2: string | boolean = Math.random() > 0.5 ?
+    '아이브' : true;
 
-if(numberOrStirng2 === stringOrBool2){
-    numberOrStirng2;
+if (numbOrString2 === stringOrBool2) {
+    numbOrString2;
     stringOrBool2;
-}else{
-    numberOrStirng2;
+} else {
+    numbOrString2;
     stringOrBool2;
 }
 
 let numberOrStringOrNull: number | string | null = Math.random() > 0.5 ?
-    1123 : Math.random() > 0.5 ? 
-    '안유진' : null;
+    1123 : Math.random() > 0.5 ? '안유진' : null;
 
 if (typeof numberOrStringOrNull === 'number') {
     numberOrStringOrNull;
@@ -68,7 +72,7 @@ if (typeof numberOrStringOrNull === 'number') {
     numberOrStringOrNull;
 }
 
-//5) in operator narrowing
+// (5) in operator narrowing
 interface Human {
     name: string;
     age: number;
@@ -98,24 +102,23 @@ if ('type' in humanOrDog) {
     humanOrDog;
 }
 
+// (6) instanceof narrowing
+let dateOrString: Date | string = Math.random() > 0.5 ?
+    new Date() : '코드팩토리';
 
-//6) instanceof narrowing
-let dateOrString: Date | string = Math.random() > 0.5 ? new Date() : '코팩'
-
-if(dateOrString instanceof Date){
-    dateOrString
-}else{
-    dateOrString
+if (dateOrString instanceof Date) {
+    dateOrString;
+} else {
+    dateOrString;
 }
 
-//7) discrimated union narrowing (차별된 유니언 내로잉)
-
-interface Animal{
+// (7) Discriminated Union Narrowing
+interface Animal {
     type: 'dog' | 'human';
     height?: number;
+    // 강아지의 종
     breed?: string;
 }
-
 
 let animal: Animal = Math.random() > 0.5 ?
     {
@@ -127,11 +130,13 @@ let animal: Animal = Math.random() > 0.5 ?
     };
 
 if (animal.type === 'human') {
-    animal.height;    
+    animal.height;
 } else {
     animal.breed;
     animal.height;
 }
+
+/////////////////////////////////////////////////////////////
 
 
 interface Human2 {
@@ -168,7 +173,6 @@ if(humanOrDog2.type === 'human'){
 }else{
     humanOrDog2;
 }
-
 
 // (8) Exhuastiveness Checking
 switch(humanOrDog2.type){
