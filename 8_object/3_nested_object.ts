@@ -17,6 +17,8 @@ const codefactory: NestedPerson = {
     },
     nationality: '한국인',
 }
+/////////////////////////////////////////////////////////////
+
 
 type TPerson = {
     identity: TPersonIdentity,
@@ -35,6 +37,9 @@ const iu: TPerson = {
     },
     nationality: '한국인',
 }
+
+/////////////////////////////////////////////////////////////
+
 
 interface IPerson {
     identity: IPersonIdentity;

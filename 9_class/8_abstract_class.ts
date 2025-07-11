@@ -18,6 +18,9 @@ class Product extends ModelWithId{
 const product = new Product(1);
 product.id;
 
+/////////////////////////////////////////////////////////////
+
+
 abstract class ModelWithAbstractMethod{
     abstract shout(name: string): string;
 }
