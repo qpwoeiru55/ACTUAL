@@ -10,6 +10,9 @@ class StringCache extends BaseCache<string>{ }
 const stringCache = new StringCache();
 stringCache.data;
 
+/////////////////////////////////////////////////////////////
+
+
 class GenericChild<T, Message> extends BaseCache<T>{
     message?: Message;
 
@@ -22,6 +25,9 @@ class GenericChild<T, Message> extends BaseCache<T>{
 const genericChild = new GenericChild<string, string>('error');
 genericChild.data;
 genericChild.message;
+
+/////////////////////////////////////////////////////////////
+
 
 /**
  * 제너릭의 inheritance
@@ -43,6 +49,12 @@ const yuJin = new Idol({
     // age: 23,
 });
 
+console.log(yuJin);
+
+/////////////////////////////////////////////////////////////
+
+
+
 /**
  * keyof 함께 사용하기
  */
@@ -58,20 +70,23 @@ function objectParser<O, K extends keyof O>(obj: O, key: K) {
 
 const val = objectParser(testObj, 'c');
 
+/////////////////////////////////////////////////////////////
+
+
 /**
  * Ternary
  * 1=== 2 ? true : false
  */
 class Idol2 {
-    type?: string;
+    aaa?: string;
 }
 
 class FemaleIdol extends Idol2 {
-    type: 'Female Idol' = 'Female Idol';
+    aaa: 'Female Idol' = 'Female Idol';
 }
 
 class MaleIdol extends Idol2 {
-    type: 'Male Idol' = 'Male Idol';
+    aaa: 'Male Idol' = 'Male Idol';
 }
 
 type SpecificIdol<T extends Idol2> = T extends MaleIdol ?

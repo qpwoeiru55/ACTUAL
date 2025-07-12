@@ -71,8 +71,7 @@ class Car {
     }
 }
 
-function instantiator<T extends { new(...args: any[]): {} }>(constructor: T,
-                                                             ...args: any[]) {
+function instantiator<T extends { new(...args: any[]): {} }>(constructor: T, ...args: any[]) {
     return new constructor(...args);
 }
 
