@@ -29,8 +29,7 @@ function RestrictParamValue<T>(restrictedValues: T[]){
 }
 
 function ValidateMethod(target: any, propertyKey: string, descriptor: PropertyDescriptor){
-    const metas: RestrictionInfo<any>[] = Reflect.getOwnMetadata(restrictParamValueKey, 
-        target, propertyKey) ?? [];
+    const metas: RestrictionInfo<any>[] = Reflect.getOwnMetadata(restrictParamValueKey, target, propertyKey) ?? [];
 
     const original = descriptor.value;
 
@@ -56,10 +55,10 @@ class Idol {
         this.age = age;
     }
 
-    @ValidateMethod    
+    @ValidateMethod
     // style에는 '신나게' | '열정적으로'
-    sing(@RestrictParamValue(['신나게', '열정적으로']) style: string, 
-    @RestrictParamValue([1,2,3]) ranking: number) {
+    sing(@RestrictParamValue(['신나게', '열정적으로']) style: string,
+         @RestrictParamValue([1,2,3]) ranking: number) {
         // if(style !== '신나게' && style !== '열정적으로'){
         //     throw Error('안됨');
         // }
@@ -73,4 +72,5 @@ const yuJin = new Idol('안유진', 23);
 console.log('--- sing ---');
 console.log(yuJin.sing('신나게', 1));
 console.log(yuJin.sing('열정적으로', 2));
+console.log(yuJin.sing('열정적으로', 4));
 console.log(yuJin.sing('기분 나쁘게', 3));
